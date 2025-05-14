@@ -17,7 +17,6 @@ import Footer from "@/components/layout/Footer";
 import MobileMenu from "@/components/layout/MobileMenu";
 import FloatingButtons from "@/components/layout/FloatingButtons";
 import Home from "@/pages/home";
-import Layout from "@/components/layout/Layout";
 
 // Lazy loaded components for better mobile performance
 const Products = lazy(() => import("@/pages/products"));
