@@ -2,26 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: 255 255 255;
-  --foreground: 0 0 0;
-  --primary: 220 90% 50%;
-  --primary-foreground: 255 255 255;
-}
-
+/* Custom styles nhẹ nhàng */
 body {
-  @apply bg-background text-foreground font-sans antialiased;
+  @apply font-sans bg-white text-gray-900;
 }
 
 h1, h2, h3, h4, h5, h6 {
   @apply font-bold;
 }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+a {
+  @apply text-blue-600 hover:underline;
 }
 
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+/* Ẩn scrollbar cho đẹp trên mobile */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
