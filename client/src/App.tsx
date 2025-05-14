@@ -4,6 +4,7 @@ import Home from "@/pages/Home";
 import Products from "@/pages/Products";
 import Cart from "@/pages/Cart";
 import NotFound from "@/pages/NotFound";
+import Layout from "@/components/layout/Layout";
 
 export default function App() {
   return (
