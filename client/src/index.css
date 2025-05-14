@@ -1,148 +1,27 @@
-/* Custom Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Nunito:wght@400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 20 14.3% 4.1%;
-  --muted: 60 4.8% 95.9%;
-  --muted-foreground: 25 5.3% 44.7%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 20 14.3% 4.1%;
-  --card: 0 0% 100%;
-  --card-foreground: 20 14.3% 4.1%;
-  --border: 20 5.9% 90%;
-  --input: 20 5.9% 90%;
-  --primary: 354 100% 71%; /* #ff6b6b */
-  --primary-foreground: 0 0% 100%;
-  --secondary: 180 68% 56%; /* #4ecdc4 */
-  --secondary-foreground: 0 0% 100%;
-  --accent: 32 100% 51%; /* #ff8906 */
-  --accent-foreground: 0 0% 100%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 60 9.1% 97.8%;
-  --ring: 20 14.3% 4.1%;
-  --radius: 0.5rem;
-  --chart-1: 354 100% 71%;
-  --chart-2: 180 68% 56%;
-  --chart-3: 32 100% 51%;
-  --chart-4: 262 83% 68%;
-  --chart-5: 0 0% 70%;
+  --background: 255 255 255;
+  --foreground: 0 0 0;
+  --primary: 220 90% 50%;
+  --primary-foreground: 255 255 255;
 }
 
-.dark {
-  --background: 0 0% 9%;
-  --foreground: 0 0% 98%;
-  --muted: 0 0% 15%;
-  --muted-foreground: 240 5% 64.9%;
-  --popover: 0 0% 9%;
-  --popover-foreground: 0 0% 98%;
-  --card: 0 0% 9%;
-  --card-foreground: 0 0% 98%;
-  --border: 0 0% 20%;
-  --input: 0 0% 20%;
-  --primary: 354 100% 71%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 180 68% 56%;
-  --secondary-foreground: 0 0% 100%;
-  --accent: 32 100% 51%;
-  --accent-foreground: 0 0% 100%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --ring: 240 4.9% 83.9%;
-  --chart-1: 354 100% 71%;
-  --chart-2: 180 68% 56%;
-  --chart-3: 32 100% 51%;
-  --chart-4: 262 83% 68%;
-  --chart-5: 0 0% 70%;
+body {
+  @apply bg-background text-foreground font-sans antialiased;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply font-sans antialiased bg-background text-foreground;
-  }
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold;
 }
 
-@layer base {
-  body {
-    font-family: 'Nunito', sans-serif;
-    @apply bg-neutral-200 text-neutral-800;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
-  }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-@layer utilities {
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-}
-
-/* Timer block */
-.timer-block {
-  aspect-ratio: 1;
-}
-
-/* Pulse animation */
-@keyframes pulse-ring {
-  0% {
-    transform: scale(0.95);
-  }
-  70%, 100% {
-    opacity: 0;
-  }
-}
-
-@keyframes pulse-dot {
-  0% {
-    transform: scale(0.95);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(0.95);
-  }
-}
-
-.pulse {
-  position: relative;
-}
-
-.pulse::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  border-radius: 50%;
-  box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
-  animation: pulse-ring 2s infinite;
-}
-
-.pulse::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  border-radius: 50%;
-  box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
-  animation: pulse-dot 2s infinite;
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
