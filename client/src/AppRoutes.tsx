@@ -9,6 +9,9 @@ import NotFound from '@/pages/NotFound';
 import Checkout from '@/pages/Checkout';
 
 <Route path="checkout" element={<Checkout />} />
+import Success from '@/pages/Success';
+
+<Route path="success" element={<Success />} />
 
 const AppRoutes: React.FC = () => {
   return (
