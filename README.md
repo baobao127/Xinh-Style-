@@ -1,31 +1,27 @@
-# Mobile-First Xinh Style
+# XinhStyle - Local E-Commerce Template
 
-## 📖 Giới thiệu
-Dự án này là phiên bản tối ưu hóa của Xinh Style với thiết kế mobile-first, giúp cải thiện trải nghiệm người dùng trên thiết bị di động.
+Dự án web bán hàng đơn giản, không cần backend, dùng `localStorage` để lưu đơn hàng, giỏ hàng, người dùng.  
+Phù hợp cho demo, học tập, hoặc dựng prototype siêu tốc.
 
-## 🚀 Tính năng mới
-- Tối ưu hóa giao diện cho thiết bị di động.
-- Lazy-loading và debounce/throttle cho hiệu suất tốt hơn.
-- Giao diện tương thích với mọi độ phân giải màn hình.
+---
 
-## 🛠️ Cách chạy dự án
-1. Clone repository:
-   ```bash
-   git clone https://github.com/baobao127/mobile-first-xinh-style.git
-   ```
-2. Cài đặt dependencies:
-   ```bash
-   npm install
-   ```
-3. Chạy ứng dụng:
-   ```bash
-   npm run dev
-   ```
+## Tính năng
 
-## 📱 Mobile-First Changes
-- Sử dụng `Tailwind CSS` và các breakpoint tối ưu.
-- Lazy-loading cho thành phần lớn.
-- Tối ưu hóa `FloatingContact`, `Sidebar`, và các trang chính.
+- Hiển thị danh sách sản phẩm từ `products.json`
+- Thêm vào giỏ hàng, xoá, cập nhật số lượng
+- Trang thanh toán (Checkout) đơn giản
+- Lưu đơn hàng bằng localStorage
+- Trang xác nhận "Đặt hàng thành công"
+- Khu admin: dashboard, xem đơn, người dùng
+- Không dùng API – không cần server
 
-## 🛡️ License
-This project is licensed under the MIT License.
+---
+
+## Cài đặt
+
+```bash
+# 1. Cài dependencies
+npm install
+
+# 2. Chạy dev
+npm run dev
