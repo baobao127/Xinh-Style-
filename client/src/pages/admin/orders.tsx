@@ -14,6 +14,27 @@ import { formatCurrency } from '@/lib/utils';
 import { apiRequest } from '@/lib/queryClient';
 import AdminLayout from '@/components/layout/AdminLayout';
 import { ORDER_STATUS } from '@/lib/constants';
+import React from 'react';
+
+const Orders: React.FC = () => {
+  const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+  return (
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">Đơn hàng</h2>
+      <ul className="space-y-2">
+        {orders.map((o: any, i: number) => (
+          <li key={i} className="border p-2 rounded">
+            <p>Khách: {o.name}</p>
+            <p>Địa chỉ: {o.address}</p>
+            <p>Sản phẩm: {o.items.length} món</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Orders;
 import { Order, OrderItem } from '@shared/schema';
 
 interface OrderWithItems extends Order {
