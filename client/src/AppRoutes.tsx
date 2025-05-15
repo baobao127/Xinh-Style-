@@ -9,6 +9,12 @@ import Cart from '@/pages/Cart';
 import NotFound from '@/pages/NotFound';
 import Checkout from '@/pages/Checkout';
 import Success from '@/pages/Success';
+import AdminProducts from '@/pages/admin/AdminProducts';
+
+<Route path="admin/products" element={<AdminProducts />} />
+import ProductsEditor from '@/pages/admin/ProductsEditor';
+
+<Route path="admin/products" element={<ProductsEditor />} />
 
 const AppRoutes: React.FC = () => {
   return (
