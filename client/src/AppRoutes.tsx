@@ -6,6 +6,9 @@ import Home from '@/pages/Home';
 import Products from '@/pages/Products';
 import Cart from '@/pages/Cart';
 import NotFound from '@/pages/NotFound';
+import Checkout from '@/pages/Checkout';
+
+<Route path="checkout" element={<Checkout />} />
 
 const AppRoutes: React.FC = () => {
   return (
