@@ -3,6 +3,16 @@ import { CartContext } from "@/context/CartContext";
 
 export default function Cart() {
   const { cart, calculateTotal, removeCartItem } = useContext(CartContext)!;
+  <button
+  onClick={() => {
+    if (window.confirm('Bạn có chắc muốn xoá sản phẩm này không?')) {
+      handleRemove(product.id);
+    }
+  }}
+  className="text-red-500 hover:underline"
+>
+  Xoá
+</button>
 
   return (
     <div className="cart-page">
