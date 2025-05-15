@@ -3,16 +3,6 @@ import { CartContext } from "@/context/CartContext";
 
 export default function Cart() {
   const { cart, calculateTotal, removeCartItem } = useContext(CartContext)!;
-  <button
-  onClick={() => {
-    if (window.confirm('Bạn có chắc muốn xoá sản phẩm này không?')) {
-      handleRemove(product.id);
-    }
-  }}
-  className="text-red-500 hover:underline"
->
-  Xoá
-</button>
 
   return (
     <div className="cart-page">
@@ -25,7 +15,16 @@ export default function Cart() {
             {cart.map((item, index) => (
               <li key={index}>
                 {item.name} - {item.quantity} x {item.price.toLocaleString()}đ
-                <button onClick={() => removeCartItem(index)}>Xóa</button>
+                <button
+                  className="text-red-500 hover:underline ml-2"
+                  onClick={() => {
+                    if (window.confirm("Bạn có chắc muốn xoá sản phẩm này không?")) {
+                      removeCartItem(index);
+                    }
+                  }}
+                >
+                  Xóa
+                </button>
               </li>
             ))}
           </ul>
@@ -34,4 +33,4 @@ export default function Cart() {
       )}
     </div>
   );
-}
+          }
