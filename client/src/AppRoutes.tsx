@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Layout from '@/components/layout/Layout';
 import NotFound from '@/pages/NotFound';
 import Checkout from '@/pages/Checkout';
 import Success from '@/pages/Success';
