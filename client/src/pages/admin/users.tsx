@@ -1,3 +1,20 @@
+import React from 'react';
+
+const Users: React.FC = () => {
+  const users = JSON.parse(localStorage.getItem('users') || '[]');
+  return (
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">Danh sách người dùng</h2>
+      <ul className="space-y-2">
+        {users.map((u: any, i: number) => (
+          <li key={i} className="border p-2 rounded">{u.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Users;
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
