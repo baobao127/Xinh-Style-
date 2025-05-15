@@ -7,6 +7,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/context/AuthContext';
 import { formatCurrency } from '@/lib/utils';
+import React from 'react';
+
+const Dashboard: React.FC = () => {
+  return (
+    <div className="p-4">
+      <h2 className="text-2xl font-bold mb-4">Admin Dashboard</h2>
+      <p>Tổng số đơn hàng: {JSON.parse(localStorage.getItem('orders') || '[]').length}</p>
+      <p>Tổng số người dùng: {JSON.parse(localStorage.getItem('users') || '[]').length}</p>
+    </div>
+  );
+};
+
+export default Dashboard;
 import AdminLayout from '@/components/layout/AdminLayout';
 
 // Mock data for charts (in a real app, this would come from API)
