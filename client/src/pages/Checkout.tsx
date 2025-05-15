@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Checkout: React.FC = () => {
@@ -6,7 +6,22 @@ const Checkout: React.FC = () => {
   const [address, setAddress] = useState('');
   const [payment, setPayment] = useState('cod');
   const [error, setError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    if (cart.length === 0) {
+      navigate('/cart');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => setError(''), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,6 +29,8 @@ const Checkout: React.FC = () => {
       setError('Vui lòng nhập đầy đủ họ tên và địa chỉ.');
       return;
     }
+
+    setSubmitting(true);
 
     const newOrder = {
       id: Date.now(),
@@ -27,7 +44,10 @@ const Checkout: React.FC = () => {
     const orders = JSON.parse(localStorage.getItem('orders') || '[]');
     localStorage.setItem('orders', JSON.stringify([...orders, newOrder]));
     localStorage.removeItem('cart');
-    navigate('/success');
+
+    setTimeout(() => {
+      navigate('/success');
+    }, 500);
   };
 
   return (
@@ -58,9 +78,10 @@ const Checkout: React.FC = () => {
         </select>
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          disabled={submitting}
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
         >
-          Xác nhận đặt hàng
+          {submitting ? 'Đang xử lý...' : 'Xác nhận đặt hàng'}
         </button>
       </form>
     </div>
