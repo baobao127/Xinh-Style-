@@ -26,7 +26,7 @@ const Checkout: React.FC = () => {
     localStorage.setItem('orders', JSON.stringify([...existingOrders, order]));
     localStorage.removeItem('cart');
 
-    navigate('/');
+    navigate('/success');
   };
 
   return (
