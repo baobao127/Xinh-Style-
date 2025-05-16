@@ -11,81 +11,59 @@ import { formatCurrency } from '@/lib/utils';
 import { ORDER_STATUS } from '@/lib/constants';
 import { Order, OrderItem } from '@shared/schema';
 
-export interface Order {
-  id: string;
-  name: string;
-  status: 'processing' | 'shipping' | 'delivered' | 'cancelled';
-  createdAt: string;
-}
 
-interface OrderItemProps {
-  order: Order;
-  onCancel: (id: string, reason: string) => void;
-}
+const Orders = () => {
+  const [orders, setOrders] = useState<any[]>([]);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-const OrderItem: React.FC<OrderItemProps> = ({ order, onCancel }) => {
-  const [showCancelInput, setShowCancelInput] = useState(false);
-  const [cancelReason, setCancelReason] = useState('');
+  useEffect(() => {
+    const data = localStorage.getItem('orders');
+    if (data) setOrders(JSON.parse(data));
+  }, []);
 
-  const handleCancelClick = () => {
-    if (!showCancelInput) {
-      setShowCancelInput(true);
-    } else if (cancelReason.trim()) {
-      onCancel(order.id, cancelReason.trim());
-      setShowCancelInput(false);
-      setCancelReason('');
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const success = searchParams.get('success');
+
+    if (success === 'true') {
+      setShowSuccessMessage(true);
+      window.history.replaceState({}, document.title, '/orders');
+
+      const timer = setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 5000);
+
+      return () => clearTimeout(timer);
     }
-  };
-
-  const isCancelable = order.status === 'processing';
+  }, []);
 
   return (
-    <div className="border rounded-xl p-4 shadow mb-4 bg-white">
-      <div className="flex justify-between items-center">
-        <div>
-          <p className="font-semibold text-lg">{order.name}</p>
-          <p className="text-sm text-gray-500">Ngày tạo: {order.createdAt}</p>
-          <p className={`text-sm mt-1 ${
-            order.status === 'cancelled' ? 'text-red-500' :
-            order.status === 'shipping' ? 'text-blue-500' :
-            order.status === 'delivered' ? 'text-green-600' :
-            'text-yellow-600'
-          }`}>
-            Trạng thái: {statusText(order.status)}
-          </p>
-        </div>
+    <div className="p-6 max-w-2xl mx-auto">
+      <h2 className="text-xl font-bold mb-4">Đơn hàng của bạn</h2>
 
-        {isCancelable && (
-          <div className="text-right">
-            <button
-              onClick={handleCancelClick}
-              className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
-            >
-              {showCancelInput ? 'Xác nhận hủy' : 'Hủy đơn'}
-            </button>
-            {showCancelInput && (
-              <textarea
-                placeholder="Nhập lý do hủy..."
-                value={cancelReason}
-                onChange={(e) => setCancelReason(e.target.value)}
-                className="mt-2 w-full p-2 border rounded"
-              />
-            )}
-          </div>
-        )}
-      </div>
+      {showSuccessMessage && (
+        <div className="bg-green-50 border border-green-200 text-green-700 rounded-lg p-4 mb-4">
+          <strong>Đặt hàng thành công!</strong> Cảm ơn bạn đã mua hàng.
+        </div>
+      )}
+
+      {orders.length === 0 ? (
+        <p>Chưa có đơn hàng nào.</p>
+      ) : (
+        <ul className="space-y-4">
+          {orders.map((order) => (
+            <li key={order.id} className="border p-4 rounded">
+              <p><strong>Tên:</strong> {order.name}</p>
+              <p><strong>Địa chỉ:</strong> {order.address}</p>
+              <p><strong>Phương thức:</strong> {order.paymentMethod}</p>
+              <p><strong>Trạng thái:</strong> Chờ xử lý</p>
+              <p className="text-gray-500 text-sm">Đặt lúc: {new Date(order.createdAt).toLocaleString()}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
 
-const statusText = (status: Order['status']) => {
-  switch (status) {
-    case 'processing': return 'Đang xử lý';
-    case 'shipping': return 'Đang giao hàng';
-    case 'delivered': return 'Đã nhận hàng';
-    case 'cancelled': return 'Đã huỷ';
-    default: return 'Không rõ';
-  }
-};
-
-export default Order;
+export default Orders;
