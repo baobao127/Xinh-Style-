@@ -44,6 +44,17 @@ import {
   DropdownMenuTrigger 
 } from "@/components/ui/dropdown-menu";
 import { queryClient, apiRequest } from "@/lib/queryClient";
+interface User {
+  id: number;
+  username: string;
+  email: string | null;
+  fullName: string | null;
+  phone: string | null;
+  address: string | null;
+  role: string;
+  createdAt: string;
+}
+
 
 const AdminUsers: React.FC = () => {
   const users = JSON.parse(localStorage.getItem('users') || '[]');
