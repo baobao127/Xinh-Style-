@@ -1,0 +1,26 @@
+[
+  {
+    "id": "p001",
+    "name": "Áo thun nữ oversize",
+    "price": 159000,
+    "image": "/images/ao-thun-oversize.jpg",
+    "description": "Chất cotton 100%, freesize dưới 55kg, nhiều màu",
+    "category": "tops"
+  },
+  {
+    "id": "p002",
+    "name": "Váy maxi dạo phố",
+    "price": 289000,
+    "image": "/images/vay-maxi.jpg",
+    "description": "Chất voan nhẹ, mặc cực mát, free size",
+    "category": "dress"
+  },
+  {
+    "id": "p003",
+    "name": "Quần short jean rách",
+    "price": 199000,
+    "image": "/images/short-jean.jpg",
+    "description": "Jeans co giãn nhẹ, phong cách năng động",
+    "category": "bottoms"
+  }
+]
