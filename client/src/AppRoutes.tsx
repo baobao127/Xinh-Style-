@@ -23,9 +23,18 @@ const AppRoutes: React.FC = () => {
         <Route path="success" element={<Success />} />
         <Route path="orders" element={<Orders />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/admin/products" element={<ProductsEditor />} />
+        <Route path="/admin/orders" element={<AdminOrders />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
       </Route>
     </Routes>
   );
 };
 
 export default AppRoutes;
+
+
+
+
+
